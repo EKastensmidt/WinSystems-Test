@@ -5,98 +5,75 @@ using UnityEngine.UI;
 
 public class Reel : MonoBehaviour
 {
-    public List<Sprite> symbols;              // Assign via Inspector
-    public GameObject symbolPrefab;           // Assign via Inspector (must be a UI Image prefab)
-    public float symbolSpacing = 100f;        // Match symbol height
-    public int visibleCount = 3;
+    [SerializeField] private RectTransform _contentArea;
+    [SerializeField] private GameObject _symbolPrefab;
+    [SerializeField] private List<Sprite> _symbolSprites;
 
-    private List<GameObject> activeSymbols = new();
-    private float topY => 0f;
-    private float bottomY => -symbolSpacing * (visibleCount - 1);
+    [SerializeField] private int _visibleSymbols = 3;
+    [SerializeField] private int _totalSymbols = 10;
+    [SerializeField] private float _spinSpeed = 500f;
+
+    private List<GameObject> _spawnedSymbols = new List<GameObject>();
+    private bool _isSpinning = false;
+    private float _stopTime;
 
     private void Start()
     {
-        Initialize();
+        Init();
     }
 
-    public void Initialize()
+    public void Init()
     {
-        // Clear previous symbols
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
-        activeSymbols.Clear();
+        // Clean up
+        foreach (Transform child in _contentArea) Destroy(child.gameObject);
+        _spawnedSymbols.Clear();
 
-        // Create symbols positioned top to bottom
-        for (int i = 0; i < visibleCount + 2; i++)
+        for (int i = 0; i < _totalSymbols; i++)
         {
-            GameObject symbol = Instantiate(symbolPrefab, transform);
-            RectTransform rt = symbol.GetComponent<RectTransform>();
-            rt.anchoredPosition = new Vector2(0, topY - i * symbolSpacing);
-            SetRandomSymbol(symbol);
-            activeSymbols.Add(symbol);
+            var symbol = Instantiate(_symbolPrefab, _contentArea);
+            var image = symbol.GetComponent<Image>();
+            image.sprite = _symbolSprites[Random.Range(0, _symbolSprites.Count)];
+            _spawnedSymbols.Add(symbol);
         }
     }
 
-    public IEnumerator Spin(float duration)
+    public void StartSpin(float duration)
     {
-        float elapsed = 0f;
-        float speed = 300f;
+        _stopTime = Time.time + duration;
+        StartCoroutine(SpinRoutine());
+    }
 
-        while (elapsed < duration)
+    private IEnumerator SpinRoutine()
+    {
+        _isSpinning = true;
+        while (Time.time < _stopTime)
         {
-            foreach (GameObject symbol in activeSymbols)
+            _contentArea.anchoredPosition -= new Vector2(0, _spinSpeed * Time.deltaTime);
+            if (_contentArea.anchoredPosition.y <= -_symbolPrefab.GetComponent<RectTransform>().rect.height)
             {
-                RectTransform rt = symbol.GetComponent<RectTransform>();
-                Vector2 pos = rt.anchoredPosition;
-                pos.y -= speed * Time.deltaTime;
-
-                if (pos.y < bottomY - symbolSpacing)
-                {
-                    pos.y = topY + symbolSpacing;
-                    SetRandomSymbol(symbol);
-                }
-
-                rt.anchoredPosition = pos;
+                // Loop content
+                _contentArea.anchoredPosition += new Vector2(0, _symbolPrefab.GetComponent<RectTransform>().rect.height);
+                var first = _spawnedSymbols[0];
+                _spawnedSymbols.RemoveAt(0);
+                _spawnedSymbols.Add(first);
+                first.transform.SetAsLastSibling();
+                var img = first.GetComponent<Image>();
+                img.sprite = _symbolSprites[Random.Range(0, _symbolSprites.Count)];
             }
-
-            elapsed += Time.deltaTime;
             yield return null;
         }
 
-        AlignSymbols();
+        _isSpinning = false;
     }
 
-    private void AlignSymbols()
+    public List<int> GetVisibleSymbols()
     {
-        // Sort top to bottom, snap to fixed positions
-        activeSymbols.Sort((a, b) => b.GetComponent<RectTransform>().anchoredPosition.y.CompareTo(
-                                      a.GetComponent<RectTransform>().anchoredPosition.y));
-
-        for (int i = 0; i < activeSymbols.Count; i++)
+        var visible = new List<int>();
+        for (int i = 0; i < _visibleSymbols; i++)
         {
-            RectTransform rt = activeSymbols[i].GetComponent<RectTransform>();
-            rt.anchoredPosition = new Vector2(0, topY - i * symbolSpacing);
+            var img = _contentArea.GetChild(i).GetComponent<Image>();
+            visible.Add(_symbolSprites.IndexOf(img.sprite));
         }
-    }
-
-    private void SetRandomSymbol(GameObject symbol)
-    {
-        Sprite sprite = symbols[Random.Range(0, symbols.Count)];
-        symbol.GetComponent<Image>().sprite = sprite;
-    }
-
-    public List<string> GetVisibleSymbols()
-    {
-        activeSymbols.Sort((a, b) => b.GetComponent<RectTransform>().anchoredPosition.y.CompareTo(
-                                      a.GetComponent<RectTransform>().anchoredPosition.y));
-
-        List<string> result = new();
-        for (int i = 0; i < visibleCount; i++)
-        {
-            result.Add(activeSymbols[i].GetComponent<Image>().sprite.name);
-        }
-        return result;
+        return visible;
     }
 }
