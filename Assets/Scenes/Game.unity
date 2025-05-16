@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 57939710}
   - component: {fileID: 57939714}
   - component: {fileID: 57939713}
-  - component: {fileID: 57939712}
   - component: {fileID: 57939711}
   m_Layer: 5
   m_Name: Reel3
@@ -191,33 +190,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: cc6f3428073e86a428e4f718e690c7d3, type: 3}
   _visibleSymbols: 3
   _totalSymbols: 10
-  _spinSpeed: 500
---- !u!114 &57939712
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57939709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 125
-    m_Bottom: -125
-  m_ChildAlignment: 4
-  m_Spacing: 20
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  _spinSpeed: 1000
 --- !u!114 &57939713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -372,7 +345,6 @@ GameObject:
   - component: {fileID: 274272045}
   - component: {fileID: 274272047}
   - component: {fileID: 274272046}
-  - component: {fileID: 274272049}
   - component: {fileID: 274272050}
   m_Layer: 5
   m_Name: Reel1
@@ -438,32 +410,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274272044}
   m_CullTransparentMesh: 1
---- !u!114 &274272049
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274272044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 125
-    m_Bottom: -125
-  m_ChildAlignment: 4
-  m_Spacing: 20
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!114 &274272050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,7 +441,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3b3cbfdd73df6d247a68f20448cd5442, type: 3}
   _visibleSymbols: 3
   _totalSymbols: 10
-  _spinSpeed: 500
+  _spinSpeed: 1000
 --- !u!1 &516201259
 GameObject:
   m_ObjectHideFlags: 0
@@ -507,7 +453,6 @@ GameObject:
   - component: {fileID: 516201260}
   - component: {fileID: 516201264}
   - component: {fileID: 516201263}
-  - component: {fileID: 516201262}
   - component: {fileID: 516201261}
   m_Layer: 5
   m_Name: Reel4
@@ -567,33 +512,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3b3cbfdd73df6d247a68f20448cd5442, type: 3}
   _visibleSymbols: 3
   _totalSymbols: 10
-  _spinSpeed: 500
---- !u!114 &516201262
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 516201259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 125
-    m_Bottom: -125
-  m_ChildAlignment: 4
-  m_Spacing: 20
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  _spinSpeed: 1000
 --- !u!114 &516201263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,7 +780,6 @@ GameObject:
   - component: {fileID: 910286721}
   - component: {fileID: 910286725}
   - component: {fileID: 910286724}
-  - component: {fileID: 910286723}
   - component: {fileID: 910286722}
   m_Layer: 5
   m_Name: Reel5
@@ -920,33 +838,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e5139aa9d42510848bcbc5d77f257f34, type: 3}
   _visibleSymbols: 3
   _totalSymbols: 10
-  _spinSpeed: 500
---- !u!114 &910286723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 910286720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 125
-    m_Bottom: -125
-  m_ChildAlignment: 4
-  m_Spacing: 20
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  _spinSpeed: 1000
 --- !u!114 &910286724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1103,7 +995,6 @@ GameObject:
   - component: {fileID: 1075082184}
   - component: {fileID: 1075082188}
   - component: {fileID: 1075082187}
-  - component: {fileID: 1075082186}
   - component: {fileID: 1075082185}
   m_Layer: 5
   m_Name: Reel2
@@ -1163,33 +1054,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e5139aa9d42510848bcbc5d77f257f34, type: 3}
   _visibleSymbols: 3
   _totalSymbols: 10
-  _spinSpeed: 500
---- !u!114 &1075082186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075082183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 125
-    m_Bottom: -125
-  m_ChildAlignment: 4
-  m_Spacing: 20
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  _spinSpeed: 1000
 --- !u!114 &1075082187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1310,9 +1175,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: SlotMachineManager, Assembly-CSharp
-        m_MethodName: StartSpin
+      - m_Target: {fileID: 606014120}
+        m_TargetAssemblyTypeName: ReelManager, Assembly-CSharp
+        m_MethodName: SpinButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
