@@ -189,7 +189,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 32838c302f68f3640a61f058f8ae4ba0, type: 3}
   - {fileID: 21300000, guid: cc6f3428073e86a428e4f718e690c7d3, type: 3}
   _visibleSymbols: 3
-  _totalSymbols: 10
   _spinSpeed: 1000
 --- !u!114 &57939713
 MonoBehaviour:
@@ -440,7 +439,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3b3cbfdd73df6d247a68f20448cd5442, type: 3}
   - {fileID: 21300000, guid: 3b3cbfdd73df6d247a68f20448cd5442, type: 3}
   _visibleSymbols: 3
-  _totalSymbols: 10
   _spinSpeed: 1000
 --- !u!1 &516201259
 GameObject:
@@ -511,7 +509,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d92ae216a9bc6434095223d6cc85d289, type: 3}
   - {fileID: 21300000, guid: 3b3cbfdd73df6d247a68f20448cd5442, type: 3}
   _visibleSymbols: 3
-  _totalSymbols: 10
   _spinSpeed: 1000
 --- !u!114 &516201263
 MonoBehaviour:
@@ -694,6 +691,10 @@ MonoBehaviour:
   - {fileID: 516201261}
   - {fileID: 910286722}
   _delayBetweenReels: 0.2
+  _minStoppageTime: 2
+  _maxStoppageTime: 4
+  _patternDatabase: {fileID: 11400000, guid: f7297b5a9b62fbe4fa95df91622d1ca4, type: 2}
+  _payoutTable: {fileID: 11400000, guid: 47cd204a74d522e4daffd92b61cc78e2, type: 2}
 --- !u!1 &716909578
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +838,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 2e5ae0f94d20a1c498ac686063f7416b, type: 3}
   - {fileID: 21300000, guid: e5139aa9d42510848bcbc5d77f257f34, type: 3}
   _visibleSymbols: 3
-  _totalSymbols: 10
   _spinSpeed: 1000
 --- !u!114 &910286724
 MonoBehaviour:
@@ -889,6 +889,7 @@ GameObject:
   - component: {fileID: 1005589596}
   - component: {fileID: 1005589595}
   - component: {fileID: 1005589597}
+  - component: {fileID: 1005589598}
   m_Layer: 5
   m_Name: Reels
   m_TagString: Untagged
@@ -984,6 +985,57 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!331 &1005589598
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005589593}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_MaskAlphaCutoff: 0.2
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1075082183
 GameObject:
   m_ObjectHideFlags: 0
@@ -1053,7 +1105,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3b3cbfdd73df6d247a68f20448cd5442, type: 3}
   - {fileID: 21300000, guid: e5139aa9d42510848bcbc5d77f257f34, type: 3}
   _visibleSymbols: 3
-  _totalSymbols: 10
   _spinSpeed: 1000
 --- !u!114 &1075082187
 MonoBehaviour:

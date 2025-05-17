@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -65,7 +66,7 @@ public class Reel : MonoBehaviour
                 RectTransform rt = symbolGO.GetComponent<RectTransform>();
                 rt.anchoredPosition -= new Vector2(0, _spinSpeed * Time.deltaTime);
 
-                // If symbol goes off the bottom, wrap it to the top
+                // IF SYMBOL GOES OFF THE BOTTOM, WRAP IT BACK TO TOP
                 if (rt.anchoredPosition.y < -symbolHeight * _visibleSymbols)
                 {
                     float highestY = GetHighestSymbolY();
@@ -86,18 +87,6 @@ public class Reel : MonoBehaviour
             if (y > maxY) maxY = y;
         }
         return maxY;
-    }
-
-
-    public List<int> GetVisibleSymbols()
-    {
-        var visible = new List<int>();
-        for (int i = 0; i < _visibleSymbols; i++)
-        {
-            var img = _contentArea.GetChild(i).GetComponent<Image>();
-            visible.Add(_symbolSprites.IndexOf(img.sprite));
-        }
-        return visible;
     }
 
     public void ForceStop()
@@ -153,5 +142,34 @@ public class Reel : MonoBehaviour
             RectTransform rt = _spawnedSymbols[i].GetComponent<RectTransform>();
             rt.anchoredPosition = new Vector2(rt.anchoredPosition.x, baseY - i * symbolHeight);
         }
+    }
+
+    public List<Sprite> GetVisibleSymbolsByYPositions()
+    {
+        List<Sprite> visible = new List<Sprite>();
+
+        float[] visibleYPositions = new float[] { 0f, -250f, -500f }; //Y POS OF SYMBOLS IN EACH ROW
+
+        foreach (float targetY in visibleYPositions)
+        {
+            // FIND CLOSEST TO Y TARGET
+            Sprite closestSprite = null;
+            float closestDistance = float.MaxValue;
+
+            foreach (var symbol in _spawnedSymbols)
+            {
+                float y = symbol.GetComponent<RectTransform>().anchoredPosition.y;
+                float dist = Mathf.Abs(y - targetY);
+                if (dist < closestDistance)
+                {
+                    closestDistance = dist;
+                    closestSprite = symbol.GetComponent<Image>().sprite;
+                }
+            }
+
+            visible.Add(closestSprite);
+        }
+
+        return visible;
     }
 }

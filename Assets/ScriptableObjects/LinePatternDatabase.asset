@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfdacdcdc1ee7c044942430646de1087, type: 3}
+  m_Name: LinePatternDatabase
+  m_EditorClassIdentifier: 
+  patterns:
+  - {fileID: 11400000, guid: 1dc94f36f5742364eb1b80331b0a52f5, type: 2}
+  - {fileID: 11400000, guid: dd1ba1aa8af394545af35fbdd1f9c3ee, type: 2}
+  - {fileID: 11400000, guid: a141daf70cdc9494ea32ff3b41b20f76, type: 2}
+  - {fileID: 11400000, guid: 8486c508198ca5849a8c75f6375d0f72, type: 2}
+  - {fileID: 11400000, guid: e0035849c0ea21440bb85a3ea3628cc8, type: 2}
+  - {fileID: 11400000, guid: dc08c0177b792fd478dbfdc74eec6679, type: 2}
+  - {fileID: 11400000, guid: fed0d430cce90fd40b08c77d1b42e8a2, type: 2}
+  - {fileID: 11400000, guid: 0f147b54e1a941b439cf8e717e9aeac7, type: 2}
+  - {fileID: 11400000, guid: fddc3e97d9b07ab4dbd3ba6e61629bdf, type: 2}
