@@ -1,8 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ReelManager : MonoBehaviour
 {
+    public Action OnSpinCompletion;
+    public Action<int> OnCreditsScored;
+    public Action OnSpinStart;
+
     [SerializeField] private Reel[] _reels;
     [SerializeField] private float _delayBetweenReels = 0.2f;
     [SerializeField] private float _minStoppageTime = 2f, _maxStoppageTime = 4f;
@@ -10,9 +16,11 @@ public class ReelManager : MonoBehaviour
     [SerializeField] private LinePatternDatabase _patternDatabase;
     [SerializeField] private SymbolPayoutTable _payoutTable;
 
+    [SerializeField] private LineDisplayManager _lineDisplayManager;
+
     private bool _isSpinning = false;
 
-    public void SpinButton()
+    public void StartSpinSequence()
     {
         if (!_isSpinning)
             StartCoroutine(SpinReels());
@@ -20,6 +28,10 @@ public class ReelManager : MonoBehaviour
 
     IEnumerator SpinReels()
     {
+        OnSpinStart?.Invoke();
+
+        _lineDisplayManager.ClearLines();
+
         _isSpinning = true;
 
         // START REELS ONE BY ONE
@@ -32,7 +44,7 @@ public class ReelManager : MonoBehaviour
         // STOP REEL ONE BY ONE
         for (int i = 0; i < _reels.Length; i++)
         {
-            float spinDuration = Random.Range(_minStoppageTime, _maxStoppageTime);
+            float spinDuration = UnityEngine.Random.Range(_minStoppageTime, _maxStoppageTime);
             yield return new WaitForSeconds(spinDuration);
             _reels[i].ForceStop();
 
@@ -57,6 +69,10 @@ public class ReelManager : MonoBehaviour
     private void EvaluateResults()
     {
         Sprite[,] symbolGrid = new Sprite[5, 3]; // [REEL, ROW]
+
+        int totalCreditsScored = 0;
+
+        List<int[]> winningPatterns = new();
 
         for (int i = 0; i < _reels.Length; i++)
         {
@@ -86,9 +102,17 @@ public class ReelManager : MonoBehaviour
                 int reward = _payoutTable.GetPayout(firstSymbol, matchCount);
                 if (reward > 0)
                 {
+                    totalCreditsScored += reward;
                     Debug.Log($"Win on pattern '{pattern.patternName}' with {matchCount}x '{firstSymbol.name}' for {reward} credits.");
                 }
+
+                winningPatterns.Add(pattern.rows);
             }
         }
+
+        _lineDisplayManager.SetWinningLines(winningPatterns); //VISUAL REPRESENTATION OF LINES
+
+        OnCreditsScored?.Invoke(totalCreditsScored);
+        OnSpinCompletion?.Invoke();
     }
 }
