@@ -110,9 +110,12 @@ public class ReelManager : MonoBehaviour
             }
         }
 
-        _lineDisplayManager.SetWinningLines(winningPatterns); //VISUAL REPRESENTATION OF LINES
+        if(totalCreditsScored > 0)
+        {
+            _lineDisplayManager.SetWinningLines(winningPatterns); //VISUAL REPRESENTATION OF LINES
+            OnCreditsScored?.Invoke(totalCreditsScored);
+        }
 
-        OnCreditsScored?.Invoke(totalCreditsScored);
         OnSpinCompletion?.Invoke();
     }
 }
